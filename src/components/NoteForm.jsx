@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react';
 
-const NoteForm = () => {
+const NoteForm = ({notes, setNotes}) => {
 
     const [formData, setFormData] = useState({
         title: '',
@@ -18,8 +18,28 @@ const NoteForm = () => {
         })
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Validation
+        if (!formData.title || !formData.description) return;
+
+        // Create not object
+        const newNote = {id: Date.now(), ...formData}
+
+        // Add notes to state
+        setNotes([newNote, ...notes]);
+
+        // Reset form data
+        setFormData({
+            title: '',
+            category: 'Work',
+            priority: 'Medium',
+            description: ''
+        })
+    }
+
     return (
-        <form action="" className="mb-6">
+        <form onSubmit={handleSubmit} action="" className="mb-6">
             <div className="mb-4">
                 <label htmlFor="title" className="block font-semibold">
                     Title
@@ -74,7 +94,13 @@ const NoteForm = () => {
                 ></textarea>
             </div>
 
-            <button className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover: bg-purple-600">Add Note</button>
+            <button
+                className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover: bg-purple-600"
+                type="submit"
+                disabled={!formData.title || !formData.description}
+            >
+                Add Note
+            </button>
         </form>
     )
 }
