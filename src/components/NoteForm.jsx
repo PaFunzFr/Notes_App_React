@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {useState} from 'react';
 import TextInput from './inputs/TextInput';
 import SelectInput from './inputs/SelectInput';
