@@ -55,7 +55,7 @@ const NoteForm = ({notes, setNotes}) => {
         { isFormVisible && (
             <form onSubmit={handleSubmit} action="" className="mb-6">
                 <TextInput 
-                    label='title'
+                    label='Title'
                     name='title'
                     value={formData.title}
                     onChange={handleChange}
