@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import NoteForm from './components/NoteForm'
 import {useState} from 'react';
+import NoteList from './components/NoteList';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <h2 className="text-2xl font-bold mb-4 text-center">📝 Notes App</h2>
 
       <NoteForm notes={notes} setNotes={setNotes} />
+      <NoteList notes={notes} />
     </div>
   )
 }
